@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 import { AuthenticationService, MessageService, UserService } from '../../services';
 import { AppState } from '../../app.service';
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
           data => {
             this.messageService.sendMessage({user: data, tokenData: data});
             this.router.navigate([this.returnUrl]);
-          }
+          },
           error => {
             console.log('Error - ', error);
             this.loading = false;
@@ -51,7 +52,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.appState.set('isLogged': false, 'tokenData': '');
+    this.appState.set('isLogged', false);
+    this.appState.set('tokenData', '');
     this.authenticationService.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
@@ -76,7 +78,8 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.appState.set('isLogged': true, 'tokenData': data);
+          this.appState.set('isLogged', true);
+          this.appState.set('tokenData', data);
           this.messageService.sendMessage({isLogged: true, tokenData: data});
         },
         error => {

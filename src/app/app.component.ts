@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 import { MessageService, AuthenticationService } from './services';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 export const ROOT_SELECTOR = 'app';
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   public currentUrl = this.router.url;
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
     private messageService: MessageService,
     private authenticationService: AuthenticationService,
     private router: Router,
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
 
   public logout() {
     this.authenticationService.logout();
-    this.appState.set('isLogged': false);
+    this.appState.set('isLogged', false);
     this.messageService.sendMessage({isLogged: false});
     this.router.navigate([this.homeUrl]);
   }

@@ -14,7 +14,7 @@ export class BookingComponent implements OnInit {
   public localState = { value: '' };
 
   constructor(
-    public appState: AppState
+    public appState: AppState,
     private messageService: MessageService
   ) {
   }

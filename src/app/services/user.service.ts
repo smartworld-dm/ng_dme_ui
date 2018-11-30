@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 export class UserService {
     constructor(private http: HttpClient) {}
 
-    getUser(access_token: access_token) {
+    getUser(access_token: string) {
         let httpOptions = {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
