@@ -1,0 +1,39 @@
+<header [hidden]="currentUrl != '/' && currentUrl != '/home'">
+    <nav class="navbar navbar-expand bg-nav pl-md-5 ml-md-0">
+        <a [routerLink]=" ['/'] " class="navbar-brand mr-sm-0" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+          <img [src]="logo" class="head-logo" alt="logo" />
+        </a>
+
+        <ul class="navbar-nav flex-row ml-auto d-md-flex">
+            <li [hidden]="!isLogged" class="nav-item dropdown show">
+                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                    <a class="dropdown-item cut-user-name"><i>Logged in as {{currentUser.username}}</i></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]=" ['/share'] ">Upload Files</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]=" ['/booking'] ">Booking</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]=" ['/allbookings'] ">All Bookings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+            <li [hidden]="isLogged" class="nav-item ">
+                <a [routerLink]=" ['/login'] " class="btn btn-outline-light my-2 my-lg-0 login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  Login
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="bg-dark text-center px-3 text-white">
+    <span>© 2018  Limited. All rights reserved. " Deliver-Me" and "Beautiful business" are trademarks of  Deliver-Me Limited.</span>
+</footer>

@@ -1,0 +1,32 @@
+.text-lightgray {
+    color: #cecece!important;
+}
+
+.inputSpace {
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
+    margin-bottom: 0px!important;
+}
+
+.txtFocus:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+
+.borderB {
+    border-bottom-left-radius: 0px!important;
+    border-bottom: none!important;
+    border-bottom-right-radius: 0px!important;
+}
+
+.borderT {
+    border-top-left-radius: 0px!important;
+    border-top-right-radius: 0px!important;
+}
+
+.text-offlight {
+    color: #e4f7ff
+}

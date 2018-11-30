@@ -1,0 +1,40 @@
+<section>
+    <div class="container h-100vh">
+      <div class="row justify-content-md-center mt-md-5 mt-sm-0">
+        <div class=" col-md-4 col-sm-12 theme-bg rounded-left">
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin text-center">
+            <h1 class="h5 mb-5 mt-5 font-weight-normal text-white">Welcome to Deliver-Me </h1>  
+            <div class="input-group input-group-text bg-white borderB">
+              <span class="input-group-addon bg-white">
+                <i class="fa fa-envelope text-lightgray"></i>
+              </span>
+              <input name="username" formControlName="username" class="form-control border-0 txtFocus inputSpace" type="text" placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+              </div>
+            </div>
+            <div class="input-group input-group-text bg-white borderT">
+              <span class="input-group-addon bg-white">
+                <i class="fa fa-lock text-lightgray"></i>
+              </span>
+              <input name="password" formControlName="password" class="form-control border-0 txtFocus inputSpace" type="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+            <button [disabled]="loading" class="btn btn-lg btn-info mt-md-2 btn-block" type="submit">Sign in</button>
+            <p class="mt-5 mb-0"><a href="#" class="text-offlight">Forgot your password?</a></p>
+          </form>
+
+        </div>
+        <div class="col-md-5 col-sm-12 bg-light login-info-center rounded-right rounded-sm-0">
+          <div class="login-info-center">
+            <div class="login-info-divider mt-5"></div>
+              <h1 class="login-info-title">Freight Your Delivery</h1>
+            <div class="login-info-divider mb-5"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
